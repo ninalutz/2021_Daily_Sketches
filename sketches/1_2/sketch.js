@@ -5,8 +5,12 @@
 let system;
 
 function setup() {
+  if(windowWidth>=600 && windowHeight >=600){
   createCanvas(600, 600);
-  system = new ParticleSystem(createVector(width/2, height/2));
+  }
+  else{
+    createCanvas(windowWidth, windowHeight);
+  }  system = new ParticleSystem(createVector(width/2, height/2));
 }
 
 function draw() {
