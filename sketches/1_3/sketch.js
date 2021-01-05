@@ -5,13 +5,19 @@
 let system;
 
 function setup() {
+  var canvas;
   if(windowWidth>=600 && windowHeight >=600){
-  createCanvas(600, 600);
+    canvas = createCanvas(600, 600);
   }
   else{
-    createCanvas(windowWidth, windowHeight);
+    canvas = createCanvas(windowWidth, windowHeight - 100);
   }
-  system = new ParticleSystem(createVector(width/2 - 100, height/2 - 100));
+  system = new ParticleSystem(createVector(width/2, height/2));
+
+  var x = (windowWidth - width) / 2;
+  var y = (windowHeight - height) / 2;
+
+  canvas.position(x, y);
 }
 
 
