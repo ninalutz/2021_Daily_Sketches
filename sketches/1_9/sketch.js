@@ -1,16 +1,11 @@
 /*
+Fork from kusakari 
+*/
 
-FORKED FROM 
- * twisted lines
- *
- * @author aadebdeb
- * @date 2017/02/04
-
- Fork and modifications by Nina Lutz 2020 and 2021
- */
-
-var colors;
-var type;
+let _nsRate;
+let _maxPoint;
+let _aryObject = [];
+let _objectNum;
 
 function setup() {
   var canvas;
@@ -25,31 +20,72 @@ function setup() {
   var y = (windowHeight - height) / 2;
 
   canvas.position(x, y);
+
+  frameRate(30);
+  colorMode(HSB, 360, 100, 100, 255);
+
+  noFill();
+
+  _objectNum = 16;
+  _nsRate = 0.001;
+  _maxPoint = 50;
+
+  for (let i = 0; i < _objectNum; i++) {
+    _aryObject.push(new line());
+  }
 }
 
 function draw() {
+  // clear();
+  blendMode(OVERLAY);
+  background(0, 50);
 
-  blendMode(BLEND);
-  background(0, 50)
+  for (let i = 0; i < _objectNum; i++) {
+    _aryObject[i].update();
+    _aryObject[i].draw();
+  }
   fill(255);
-  noStroke()
-  text("1.9.21", 30, height - 30)
-  blendMode(EXCLUSION);
-  noFill();
-  strokeWeight(2);
+  noStroke();
+  text("1.9.2021", 30, height-30)
+}
 
-  for(var i = 0; i < 3; i++) {
-    for(var j = 0; j < 10; j++) {
+class line {
+  constructor() {
+    this.nsX = random(100);
+    this.nsY = random(100);
+    this.color = color(random(360), 100, 100, 255);
+    this.sw = random(width/20, width/3);
+    this.aryPoints = [];
+  }
+  update() {
+    this.nsX += _nsRate;
+    this.nsY += _nsRate;
+    this.aryPoints.unshift([
+      width/3 * cos(8*PI*noise(this.nsX)),
+      height/3 * sin(8*PI*noise(this.nsY))
+    ]);
+
+    while (this.aryPoints.length > _maxPoint) {
+      this.aryPoints.pop();
+    }
+  }
+  draw() {
+    stroke(this.color);
+    strokeWeight(2);
+    push();
+    translate(width/2, height/2);
     beginShape();
-    fill(0)
-    stroke(i*j, j*3, j*200 + i*30, 20*j);
-    for(var w = -20; w < width + 20; w += 6) {
-      var h = 250;
-      h += 100 * sin(w * 0.03 + frameCount * .007 + i * TWO_PI / 3) * pow(abs(sin(w * 0.001 + frameCount * 0.02)), 5);
-      ellipse(h + j*10, w, 50, 50);
-    }    
+    for (let i = 0; i < this.aryPoints.length; i++) {
+      ellipse(this.aryPoints[i][0], this.aryPoints[i][1], 20, 20);
+    }
     endShape();
+    pop();
   }
+}
+
+function mouseReleased() {
+  _aryObject = [];
+  for (let i = 0; i < _objectNum; i++) {
+    _aryObject.push(new line());
   }
-  
 }
