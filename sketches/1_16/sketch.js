@@ -31,7 +31,7 @@ function setup() {
   noStroke();
   
   updateParticles();
-    background(0)
+  background(0)
 
 
   interval = setInterval(updateParticles, 5000);
