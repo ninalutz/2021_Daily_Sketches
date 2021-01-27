@@ -14,38 +14,36 @@ let sizes = [unit, unit];
 /////////////////////////////////////////////////////////////////
 
 function setup() {
-  var canvas;
-  if(windowWidth>=600 && windowHeight >=600){
-    canvas = createCanvas(600, 600);
-  }
-  else{
-    canvas = createCanvas(windowWidth, windowHeight - 100);
-  }
+    var canvas;
+    if(windowWidth>=600 && windowHeight >=600){
+      canvas = createCanvas(600, 600);
+    }
+    else{
+      canvas = createCanvas(windowWidth, windowHeight - 100);
+    }
 
-  var x = (windowWidth - width) / 2;
-  var y = (windowHeight - height) / 2;
+    var x = (windowWidth - width) / 2;
+    var y = (windowHeight - height) / 2;
 
-  canvas.position(x, y);
-  background(0);
+    canvas.position(x, y);
+    background(0);
 
-  angleMode(DEGREES);
-  noStroke();
+    angleMode(DEGREES);
+    noStroke();
 
-  a = new ParticleGroup(color(rCol(128)), nums, sizes);
-  b = new ParticleGroup(color(rCol(128)), nums, sizes);
-  c = new ParticleGroup(color(rCol(128)), nums, sizes);
-  d = new ParticleGroup(color(rCol(128)), nums, sizes);
-  e = new ParticleGroup(color(rCol(128)), nums, sizes);
-  f = new ParticleGroup(color(rCol(128)), nums, sizes);
+    a = new ParticleGroup(color(rCol(128)), nums, sizes);
+    b = new ParticleGroup(color(rCol(128)), nums, sizes);
+    c = new ParticleGroup(color(rCol(128)), nums, sizes);
+    d = new ParticleGroup(color(rCol(128)), nums, sizes);
+    e = new ParticleGroup(color(rCol(128)), nums, sizes);
+    f = new ParticleGroup(color(rCol(128)), nums, sizes);
 
-  group1=[a,b,c,d,e,f];
-  
-  for (let group of group1){
-    ParticleGroup.populate(group);
-  }
-
-  blendMode(DIFFERENCE)
-
+    group1=[a,b,c,d,e,f];
+    
+    for (let group of group1){
+      ParticleGroup.populate(group);
+    }
+    blendMode(DIFFERENCE)
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -123,13 +121,10 @@ class Particle {
   }
 
   checkEdge() {
-
     if (this.pos.x < width-width*1.1 || this.pos.x > width*1.1 || this.pos.y < height-height*1.1 || this.pos.y > height*1.1) {
       this.pos.x = round(random(width) / unit) * unit;
       this.pos.y = round(random(height) / unit) * unit;
-//this.speed *= random([1, -1]);
     }
-
   }
 
   display() {
@@ -137,13 +132,6 @@ class Particle {
     rectMode(CENTER);
     circle(this.pos.x, this.pos.y,50, 50)
     rect(this.pos.x, this.pos.y,100, 100)
-
-    // if(second() %2 == 0){
-    //     triangle(this.pos.x, this.pos.y, this.pos.x + 70, this.pos.y + 100, this.pos.x - 70, this.pos.y + 100);
-    // }
-    // else{
-    //     rect(this.pos.x, this.pos.y, 100, 100);
-    // }
   }
 }
 
