@@ -1,18 +1,13 @@
 
 var circles = []
-var total = 10
+var total = 20
 var img;
 
 
 function setup () {
   w = 600;
     var canvas;
-    if(windowWidth>=600 && windowHeight >=600){
-      canvas = createCanvas(600, 600);
-    }
-    else{
-      canvas = createCanvas(windowWidth, windowHeight - 100);
-    }
+    canvas = createCanvas(windowWidth, windowHeight);
 
     var x = (windowWidth - width) / 2;
     var y = (windowHeight - height) / 2;
@@ -51,12 +46,12 @@ function draw() {
 
     fill(map(circle.pos.x, 0, width, 0, 360), 255, 255, 10);
 
-    triangle(circle.prevPos.x, circle.prevPos.y, circle.prevPos.x + 50, circle.prevPos.y + 80,  circle.prevPos.x - 50, circle.prevPos.y + 80)
+    triangle(circle.prevPos.x, circle.prevPos.y, circle.prevPos.x + 100, circle.prevPos.y + 150,  circle.prevPos.x - 100, circle.prevPos.y + 150)
 
     circle.prevPos.x = circle.pos.x
     circle.prevPos.y = circle.pos.y
   }
   fill(255);
   noStroke();
-  text("2.3.21", 50, height - 40);
+  // text("2.3.21", 50, height - 40);
 }

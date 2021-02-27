@@ -41,7 +41,7 @@ function draw() {
   }
       fill(255);
       noStroke();
-    text("2.9.21", 30, height-30)
+    // text("2.9.21", 30, height-30)
 
 }
 

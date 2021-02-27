@@ -17,12 +17,7 @@ let sizes = [unit, unit];
 
 function setup() {
   var canvas;
-  if(windowWidth>=600 && windowHeight >=600){
-    canvas = createCanvas(600, 600);
-  }
-  else{
-    canvas = createCanvas(windowWidth, windowHeight - 100);
-  }
+  canvas = createCanvas(windowWidth, windowHeight);
 
   var x = (windowWidth - width) / 2;
   var y = (windowHeight - height) / 2;
@@ -58,7 +53,7 @@ function draw() {
   }
 
   fill(255);
-  text("1.22.21", 30, height-30)
+  //text("1.22.21", 30, height-30)
 }
 
 /////////////////////////////////////////////////////////////////////////
