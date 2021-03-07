@@ -86,7 +86,7 @@ function draw(){
 
   fill(255);
   noStroke();
- text("1.19.20", 30, height-30);
+ // text("1.19.20", 30, height-30);
 }
 
 

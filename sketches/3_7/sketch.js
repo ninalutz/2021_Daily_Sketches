@@ -32,7 +32,7 @@ Blob.prototype.render = function(offset) {
     var r = this.radius + sin(offset + this.segments[i]) * this.magnitude,
         pr = this.radius + sin(offset + this.segments[(i+1)%n]) * this.magnitude,
         c = (4/5) * tan(PI/(2*n)) * r,
-        pc = (8/3) * tan(PI/(2*n)) * pr,
+        pc = (18/3) * tan(PI/(2*n)) * pr,
         t = PI * 2 / n * i,
         pt = PI * 2 / n * (i + 1),
         x = cos(t) * r,
@@ -98,14 +98,15 @@ function setup() {
   for (var i = blobs.length; i--; ) {
     var r = map(i, 0, blobs.length, 16, maxR),
         m = map(i, 0, blobs.length, 2, maxR / (2*nBlobs));
-    blobs[i] = new Blob(r, 2, m, color[i%(10)]);
+    blobs[i] = new Blob(r, 3, m, color[i%(10)]);
   }
 }
 
 function draw() {
+  blendMode(SOFT_LIGHT)
   background(0, 20);
   fill(255)
-  text("3.6.21", 30, height-30)
+  text("3.7.21", 30, height-30)
   translate(width / 2, height / 2);
   
   if (autoPlay) {
