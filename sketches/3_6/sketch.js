@@ -105,7 +105,7 @@ function setup() {
 function draw() {
   background(0, 20);
   fill(255)
-  text("3.6.21", 30, height-30)
+  // text("3.6.21", 30, height-30)
   translate(width / 2, height / 2);
   
   if (autoPlay) {
