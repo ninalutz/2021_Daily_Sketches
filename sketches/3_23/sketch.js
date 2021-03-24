@@ -23,8 +23,6 @@ function setup() {
 
   canvas.position(x, y);
 
-
-
   noLoop();
 
   let colors = [[255, 0, 0], [0, 255, 0], [0, 0, 255]];
