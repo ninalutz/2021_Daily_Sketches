@@ -1,0 +1,33 @@
+
+var t = 0;
+function setup() {
+  w = 600;
+    var canvas;
+    if(windowWidth>=600 && windowHeight >=600){
+      canvas = createCanvas(600, 600);
+    }
+    else{
+      canvas = createCanvas(windowWidth, windowHeight - 100);
+    }
+
+  var x = (windowWidth - width) / 2;
+  var y = (windowHeight - height) / 2;
+
+  canvas.position(x, y);
+  background(0);
+  noStroke();
+  rectMode(CENTER)
+
+}
+function draw() {
+  background(0, 20)
+  for(i=20;i>0;i--){
+    fill(i%2?255:120, 20);
+    for(j=0;j<10;j++){
+      ellipse(2*w*noise(j,t,0)-w/2, 2*w*noise(j,t,1)-w/2, w*i/20, w*i/20);
+      rect(2*w*noise(j,t,0)-w/2, 2*w*noise(j,t,1)-w/2, 2*w*i/20, 2*w*i/20);
+
+    }
+  }
+  t+=.004;
+}
