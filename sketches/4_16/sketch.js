@@ -1,7 +1,5 @@
 //Inspo from okazz
 
-
-
 function setup() {
   w = 600;
   var canvas;
@@ -29,18 +27,18 @@ function setup() {
 }
 
 let noise1 = 0.0002; 
-let noise2 = 100;
+let noise2 = 20;
 
 function draw(){
   background(0)
-    let num = 11;
+    let num = 10;
   for (let i = 1; i < num; i++) {
     let y = map(i, 0, num, 0, height);
-    let col = color(i*20, (i%2)*100, i*10);
+    let col = color((i%2)*10, i*25, (i%2)*100);
     stroke(col);
-    line(0, y, width, y);
+    // line(0, y, width, y);
     col.setAlpha(50);
-    strokeWeight(20)
+    strokeWeight(4)
     stroke(col);
     for (let x = 0; x < width; x++) {
       noiseCurve(x, y);
@@ -55,7 +53,7 @@ function noiseCurve(x, y) {
   noFill();
   beginShape();
   for (let i = 0; i < c; i++) {
-    let scl = 0.003;
+    let scl = 0.03;
     let angle = noise(x * scl, y * scl, i * noise1) * noise2;
     vertex(x, y);
     x += cos(angle)*3;
