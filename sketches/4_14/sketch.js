@@ -1,8 +1,5 @@
 //Inspo from okazz
 
-let colors = ["#ed3441", "#ffd630", "#329fe3", "#154296", "#ffffff", "#303030"];
-
-
 function setup() {
   w = 600;
   var canvas;
@@ -20,15 +17,9 @@ function setup() {
   background(0);
   noStroke();
 
-  shuffle(colors, true);
-  background(colors[1]);
-  colors.splice(1, 1);
-
   translate(width / 2, height / 2);
   scale(0.7);
   translate(-width / 2, -height / 2);
-
-  // frameRate(10)
 
 }
 

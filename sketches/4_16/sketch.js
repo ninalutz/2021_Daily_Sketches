@@ -21,9 +21,6 @@ function setup() {
   translate(width / 2, height / 2);
   scale(0.7);
   translate(-width / 2, -height / 2);
-
-  // frameRate(10)
-
 }
 
 let noise1 = 0.0002; 
