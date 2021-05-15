@@ -88,12 +88,15 @@ class Mover {
     let cLine = lerpColor(color(this.c1), color(this.c2), this.d/this.maxD - 100);
 
     fill(c, 15);
-    strokeWeight(2)
-    stroke(255)
-    if(frameCount%10 == 0){
+    if(frameCount%2 == 0){
+      strokeWeight(0.5)
       stroke(0);
+      ellipse(this.pos.x, this.pos.y, this.d*2, this.d*2);
     }
-    ellipse(this.pos.x, this.pos.y, this.d*2, this.d*2);
+    if(frameCount%15==0){
+      strokeWeight(10);
+      rect(this.pos.x, this.pos.y, this.d*2, this.d*2);
+    }
   }
 }
 

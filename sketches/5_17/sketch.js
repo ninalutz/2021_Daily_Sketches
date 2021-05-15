@@ -89,9 +89,9 @@ class Mover {
 
     fill(c, 15);
     strokeWeight(2)
-    stroke(255)
+    stroke(0)
     if(frameCount%10 == 0){
-      stroke(0);
+      stroke(255);
     }
     ellipse(this.pos.x, this.pos.y, this.d*2, this.d*2);
   }
